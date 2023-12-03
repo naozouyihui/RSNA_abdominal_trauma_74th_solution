@@ -354,7 +354,7 @@ def main():
             proress_images = [None] * 4
             for i in range(proress_masks.shape[0]):
                 row = df.iloc[batch_id * batch_size_seg + i]
-                proress_images = load_cropped_images(proress_masks[i], row.image_folder) # (4, 30, 6, 224, 224)
+                proress_images = load_cropped_images(proress_masks[i], row.image_folder) # (4, 20, 6, 224, 224)
 
 
             patient_directory_path = os.path.join(data_liver_dir, str(row.patient_id))

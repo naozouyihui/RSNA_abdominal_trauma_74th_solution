@@ -35,7 +35,7 @@ class CFG:
 
     device = torch.device('cuda')
     bce = nn.BCEWithLogitsLoss(reduction='none')
-    n_epochs = 1
+    n_epochs = 50
 
     transforms_train = albumentations.Compose([
         albumentations.Resize(image_size, image_size),

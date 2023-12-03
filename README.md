@@ -9,8 +9,6 @@
 Team: [naocanzouyihui ](https://www.kaggle.com/naocanzouyihui)
 Rank: `74/1123` Solo Winner - [LeaderBoard](https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection/leaderboard)
 
-[Solution Summary](https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection/discussion/448208)
-
 Hardware:
 
 - CPU : `13th Gen Intel(R) Core(TM) i7-13700K 8 cores 24 threads`
@@ -25,6 +23,8 @@ OS/platform : `Windows 11`
 ## Solution Summary
 
 This repository contains code to reproduce the 74th place solution, achieving private LB 0.59.
+
+[Solution Summary](https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection/discussion/459058)
 
 ------
 

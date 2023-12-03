@@ -26,7 +26,7 @@ class CFG:
     num_workers = 2
     out_dim = 5
 
-    n_epochs = 1
+    n_epochs = 50
 
     transforms_train = transforms.Compose([
         transforms.RandFlipd(keys=["image", "mask"], prob=0.5, spatial_axis=1),
