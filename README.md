@@ -24,7 +24,7 @@ OS/platform : `Windows 11`
 
 ## Solution Summary
 
-This repository contains code to reproduce the 6th place solution, achieving private LB 0.40.
+This repository contains code to reproduce the 74th place solution, achieving private LB 0.59.
 
 ------
 
@@ -40,7 +40,7 @@ This repository contains code to reproduce the 6th place solution, achieving pri
   - download [Competition data](https://www.kaggle.com/competitions/rsna-2023-abdominal-trauma-detection/data) and change folder name to `rsna-2023-abdominal-trauma-detection`
 
     ```
-    data/dataset
+    data/rsna-2023-abdominal-trauma-detection
     ├── image_level_labels.csv
     ├── sample_submission.csv
     ├── segmentations [206 entries exceeds filelimit, not opening dir]
@@ -57,42 +57,143 @@ This repository contains code to reproduce the 6th place solution, achieving pri
 
 ### Train model
 
-`cd bash` : to run bash file
-
 #### 1. Train 3D segmentation model
 
-1. `cd src/Segmentation` : save transformed images and masks to train segmentation model to save time
+1. `cd src/Segmentation` : to run segmentation file
 
 2. `python train.py` : to train segmentation model
 
-3. `python train.py` : to train segmentation model
+3. `python process_data.py` : generate classification data based on segmentation model
 
    - segmentation model folder
 
      ```
      ├── results
-     │   ├── segmentations
-     │   │   └── test
+     │   ├── models
+     │   │   ├── segmentations
+     │   │   │    └── train
      ```
-
+   
+   - segmentation logs folder
+   
+     ```
+     ├── results
+     │   ├── logs
+     │   │   ├── segmentations
+     │   │   │    └── train
+     ```
      
-
    - data structure of segmented output will be :
-
+   
      ```
-     ├── segmentations           # by seg_save_cache.sh
-     │   └── s_128
-     ├── segmented               # by seg_output.sh
-     │   ├── bowel
-     │   ├── bowel_slices
-     │   ├── left_kidney
-     │   ├── liver
-     │   ├── right_kidney
-     │   └── spleen
+     ├── results               
+     │   ├── data
+     │   │   ├── segmentation
+     │   │   │   ├── data        
+     │   │   │   │   ├── liver
+     │   │   │   │   ├── kidney
+     │   │   │   │   ├── spleen
+     │   │   │   │   ├── bowel
      ```
-
      
 
-#### 2. Train Organ and Bowel Model
+#### 2. Train Bowel Model
 
-1. `source train_organ_bowel.sh` : to train organ and bowel model
+1. `cd src/Classification_bowel` : to run bowel classification file
+
+2. `python train.py` : to train bowel model
+
+   - bowel model folder
+
+     ```
+     ├── results
+     │   ├── models
+     │   │   ├── bowel
+     │   │   │    └── train
+     ```
+
+   - train bowel logs folder
+
+     ```
+     ├── results
+     │   ├── logs
+     │   │   ├── bowel
+     │   │   │    └── train
+     ```
+
+#### 3. Train Kidney Model
+
+1. `cd src/Classification_kidney `: to run kidney classification file
+
+2. `python train.py` : to train kidney model
+
+   - kidney model folder
+
+     ```
+     ├── results
+     │   ├── models
+     │   │   ├── kidney
+     │   │   │    └── train
+     ```
+
+   - train bowel logs folder
+
+     ```
+     ├── results
+     │   ├── logs
+     │   │   ├── kidney
+     │   │   │    └── train
+     ```
+
+#### 4. Train Liver Model
+
+1. `cd src/Classification_liver `: to run liver classification file
+
+2. `python train.py` : to train liver model
+
+   - liver model folder
+
+     ```
+     ├── results
+     │   ├── models
+     │   │   ├── liver
+     │   │   │    └── train
+     ```
+
+   - liver logs folder
+
+     ```
+     ├── results
+     │   ├── logs
+     │   │   ├── liver
+     │   │   │    └── train
+     ```
+
+#### 5. Train Spleen Model
+
+1. `cd src/Classification_spleen `: to run spleen classification file
+
+2. `python train.py` : to train spleen model
+
+   - spleen model folder
+
+     ```
+     ├── results
+     │   ├── models
+     │   │   ├── liver
+     │   │   │    └── train
+     ```
+
+   - spleen logs folder
+
+     ```
+     ├── results
+     │   ├── logs
+     │   │   ├── liver
+     │   │   │    └── train
+     ```
+
+#### 6. Train all Model
+
+1. `cd bash` : to run bash file
+2. `sh train_all.sh` : to train all model
